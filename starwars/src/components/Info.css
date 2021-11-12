@@ -1,0 +1,44 @@
+.Info {
+  background-image: url("https://www.nawpic.com/media/2020/star-wars-nawpic-23.jpg");
+  position: fixed;
+  min-width: 100%;
+  min-height: 92%;
+  background-size: cover;
+  background-position: bottom;
+  text-align: center;
+}
+
+.dataList {
+  list-style: "none";
+  font-size: 20px;
+  color: white;
+}
+
+.pageButtons {
+  text-align: left;
+  margin-left: 60px;
+}
+
+.infoscreen {
+  text-align: left;
+  color: white;
+  border-color: black;
+  margin: 40px;
+  background-color: black;
+  opacity: 0.8;
+  width: 400px;
+  height: 550px;
+}
+
+.button {
+  background-color: black;
+  color: white;
+  margin: 6px;
+  padding: 5px 40px;
+  font-size: 20px;
+}
+
+.pageText {
+  font-size: 30px;
+  color: white;
+}

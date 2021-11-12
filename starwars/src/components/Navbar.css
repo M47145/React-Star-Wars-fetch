@@ -1,0 +1,9 @@
+.Navbar {
+  text-align: "center";
+}
+
+.navbar-link {
+  font-size: 24px;
+  color: black;
+  margin: 30px;
+}
