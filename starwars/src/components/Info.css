@@ -27,7 +27,7 @@
   background-color: black;
   opacity: 0.8;
   width: 400px;
-  height: 550px;
+  height: auto;
 }
 
 .button {
@@ -41,4 +41,19 @@
 .pageText {
   font-size: 30px;
   color: white;
+}
+
+.input {
+  font-size: 20px;
+  padding: 5px 40px;
+}
+
+.moreInfo {
+  height: auto;
+  width: 400px;
+  background-color: black;
+  color: white;
+  margin-left: 500px;
+  text-align: left;
+  font-size: 20px;
 }

@@ -11,8 +11,13 @@ function Info() {
   let [data, setData] = React.useState([]);
   //Determines is data is visible or not
   let [dataIsVisible, setDataIsVisible] = React.useState(false);
+  //More info about character by name
+  let [charName, setCharName] = React.useState();
+  //Character info visibility
+  let [charDataVisible, setCharDataVisible] = React.useState(false);
+  let [chardata, setchardata] = React.useState([]);
 
-  //Values you can fetch different info from api
+  //Values you can use to fetch different info from api
   const filterValues = [
     { id: 1, name: "People", value: "people" },
     { id: 2, name: "Planets", value: "planets" },
@@ -37,35 +42,79 @@ function Info() {
     let jsnArr = jsn.results;
     setData(jsnArr);
     setDataIsVisible(true);
+
+    console.log(jsnArr);
   };
-  const getInfo = () => {
-    console.log("info");
+  const getMoreInfo = async () => {
+    if (selectedFilter === 3) {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].title === charName) {
+          let id;
+          if (pagenumber === 1) {
+            id = i + 1;
+          } else {
+            id = i + 1 + 10 * (pagenumber - 1);
+          }
+          console.log(id);
+          console.log(`${filterValues[selectedFilter].value}`);
+          const newfetchURL = `${basicURL}${filterValues[selectedFilter].value}/${id}/`;
+          let fetcheddata = await fetch(newfetchURL);
+          let jsn = await fetcheddata.json();
+          pushInfo(jsn.opening_crawl);
+        }
+      }
+    } else {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].name === charName) {
+          let id;
+          if (pagenumber === 1) {
+            id = i + 1;
+          } else {
+            id = i + 1 + 10 * (pagenumber - 1);
+          }
+          const newfetchURL = `${basicURL}${filterValues[selectedFilter].value}/${id}/`;
+          let fetcheddata = await fetch(newfetchURL);
+          let jsn = await fetcheddata.json();
+          pushInfo(jsn);
+        }
+      }
+    }
+    setCharName("");
   };
 
+  const pushInfo = async (e) => {
+    let ar = [];
+    if (selectedFilter === 3) {
+      ar = [e, ""];
+      setchardata(ar);
+    } else if (selectedFilter === 0) {
+      let homeworld = await fetch(e.homeworld);
+      let homeworldJSON = await homeworld.json();
+      let filmsArr = [];
+      for (let i = 0; i < e.films.length; i++) {
+        let filmFetch = await fetch(e.films[i]);
+        let filmFetchJSON = await filmFetch.json();
+        filmsArr.push(filmFetchJSON.title);
+      }
+      ar = [
+        `${e.name}`,
+        `Eye color: ${e.eye_color}`,
+        `Skin color: ${e.skin_color}`,
+        `Hair color: ${e.hair_color}`,
+        `Homeworld: ${homeworldJSON.name}`,
+        `Films: ${filmsArr}`,
+      ];
+      setchardata(ar);
+    }
+    setCharDataVisible(true);
+  };
   //Way to put fetch into data variable
   //Needed a separate part when fetching movies since they had different response
   let listItems = data.map((value, index) => {
     if (selectedFilter === 3) {
-      return (
-        <li key={index}>
-          <button onClick={getInfo} style={{ margin: "10px" }}>
-            MORE
-          </button>
-          {value.title}
-        </li>
-      );
+      return <li key={index}>{value.title}</li>;
     } else {
-      return (
-        <li key={index}>
-          <button
-            onClick={getInfo}
-            style={{ margin: "10px", height: "30px", width: "60px" }}
-          >
-            MORE
-          </button>
-          {value.name}
-        </li>
-      );
+      return <li key={index}>{value.name}</li>;
     }
   });
 
@@ -76,10 +125,14 @@ function Info() {
     clear();
     console.log(selectedFilter);
   };
+  const handleNameChange = (e) => {
+    setCharName(e.target.value);
+  };
 
   //Clears screen
   const clear = () => {
     setData([]);
+    setchardata([]);
     setDataIsVisible(false);
   };
 
@@ -156,7 +209,20 @@ function Info() {
             {listItems}
           </ul>
         </View>
+        <View>
+          <div
+            className="moreInfo"
+            style={{ display: charDataVisible ? "block" : "none" }}
+          >
+            {chardata.map((chardata) => (
+              <li style={{ listStyle: "none" }} key={chardata}>
+                {chardata}
+              </li>
+            ))}
+          </div>
+        </View>
       </div>
+
       <div>
         <div
           className="pageButtons"
@@ -176,6 +242,19 @@ function Info() {
           <button className="button" onClick={previousPage}>
             Previous
           </button>
+          <div>
+            <label>
+              <input
+                className="input"
+                type="text"
+                value={charName}
+                onChange={handleNameChange}
+              ></input>
+              <button className="button" onClick={getMoreInfo}>
+                More info
+              </button>
+            </label>
+          </div>
         </div>
       </div>
     </div>
