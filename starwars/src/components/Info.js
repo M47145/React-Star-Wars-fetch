@@ -38,7 +38,15 @@ function Info() {
     const fetchURL = `${basicURL}${filterValues[selectedFilter].value}/?page=${pagenumber}`;
     let fetcheddata = await fetch(fetchURL);
     let jsn = await fetcheddata.json();
-    maxPages = Math.floor(jsn.count / 10) + 1;
+    //Planets filter needed separate maxpage calculator since it had exactly 60
+    //pieces of data and +1 after Math.floor made so it would try get data
+    //page that wasnt there
+    if (selectedFilter === 1) {
+      maxPages = Math.floor(jsn.count / 10);
+    } else {
+      maxPages = Math.floor(jsn.count / 10) + 1;
+    }
+
     let jsnArr = jsn.results;
     setData(jsnArr);
     setDataIsVisible(true);
@@ -50,6 +58,7 @@ function Info() {
       for (let i = 0; i < data.length; i++) {
         if (data[i].title === charName) {
           let id;
+          console.log(id);
           if (pagenumber === 1) {
             id = i + 1;
           } else {
@@ -69,8 +78,14 @@ function Info() {
           let id;
           if (pagenumber === 1) {
             id = i + 1;
+            console.log(id);
           } else {
             id = i + 1 + 10 * (pagenumber - 1);
+            if (id >= 17 && selectedFilter === 0) {
+              //Id number 17 was missing from people database so had skip it
+              id++;
+            }
+            console.log(id);
           }
           const newfetchURL = `${basicURL}${filterValues[selectedFilter].value}/${id}/`;
           let fetcheddata = await fetch(newfetchURL);
@@ -96,6 +111,7 @@ function Info() {
         let filmFetchJSON = await filmFetch.json();
         filmsArr.push(filmFetchJSON.title);
       }
+
       ar = [
         `${e.name}`,
         `Eye color: ${e.eye_color}`,
@@ -103,6 +119,41 @@ function Info() {
         `Hair color: ${e.hair_color}`,
         `Homeworld: ${homeworldJSON.name}`,
         `Films: ${filmsArr}`,
+      ];
+      setchardata(ar);
+    } else if (selectedFilter === 1) {
+      ar = [
+        `${e.name}`,
+        `Climate: ${e.climate}`,
+        `Population: ${e.popilation}`,
+        `Terrain: ${e.terrain}`,
+      ];
+      setchardata(ar);
+    } else if (selectedFilter === 2) {
+      ar = [
+        `${e.name}`,
+        `Model: ${e.model}`,
+        `Manufacturer: ${e.manufacturer}`,
+        `Length: ${e.length}`,
+        `Crew size: ${e.crew}`,
+      ];
+      setchardata(ar);
+    } else if (selectedFilter === 4) {
+      ar = [
+        `${e.name}`,
+        `Classification: ${e.classification}`,
+        `Designation: ${e.designation}`,
+        `Average lifespan: ${e.average_lifespan}`,
+        `Language: ${e.language}`,
+      ];
+      setchardata(ar);
+    } else if (selectedFilter === 5) {
+      ar = [
+        `${e.name}`,
+        `Model: ${e.model}`,
+        `Manufacturer: ${e.manufacturer}`,
+        `Length: ${e.length}`,
+        `Crew size: ${e.crew}`,
       ];
       setchardata(ar);
     }

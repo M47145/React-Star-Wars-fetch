@@ -16,6 +16,10 @@ function About() {
           </a>
           and with fetch we can get data in JSON format.
         </p>
+        <p>
+          Fun little project although realize it's not done in the most optimal
+          way.
+        </p>
       </div>
     </div>
   );
