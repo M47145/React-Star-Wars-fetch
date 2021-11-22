@@ -1,12 +1,11 @@
 .Info {
   background-image: url("https://www.nawpic.com/media/2020/star-wars-nawpic-23.jpg");
   position: fixed;
-  min-width: 100%;
-  min-height: 92%;
+  width: 100%;
+  height: 90%;
   background-size: cover;
   background-position: bottom;
-  text-align: center;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .dataList {
@@ -16,7 +15,6 @@
   background-color: black;
   width: 100%;
   opacity: 0.8;
-  height: auto;
   margin-left: 40px;
   text-align: left;
 }
@@ -25,42 +23,58 @@
   text-align: left;
   margin-left: 60px;
 }
-.center {
-  margin-left: 36%;
-}
 
 .infoscreen {
-  display: flex;
+  display: table;
   flex-direction: row;
   font-size: 20px;
-  height: auto;
+  align-items: left;
 }
 .infoview {
   flex: 1;
   text-align: left;
   color: white;
   border-color: black;
-  margin-left: 40px;
   background-color: black;
   opacity: 0.8;
-  width: 400px;
+  max-width: 20%;
   height: auto;
+  min-width: 220px;
 }
 
+.infoview2 {
+  flex: 1;
+  text-align: left;
+  color: white;
+  border-color: black;
+  margin-left: 30%;
+  background-color: black;
+  opacity: 0.8;
+  max-width: 20%;
+  height: auto;
+  min-width: 220px;
+}
+.pageButtons {
+  text-align: center;
+}
 .button {
   background-color: black;
   color: white;
   margin: 6px;
   padding: 5px 40px;
-  font-size: 20px;
+  font-size-adjust: none;
+  min-width: 6%;
+  width: auto;
+  text-align: center;
 }
 
 .pageText {
-  font-size: 30px;
+  font-size: 60%;
   color: white;
 }
 
 .input {
   font-size: 20px;
   padding: 5px 40px;
+  width: 10%;
 }

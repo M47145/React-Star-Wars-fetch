@@ -272,20 +272,20 @@ function Info() {
             <button className="button" onClick={previousPage}>
               Previous
             </button>
-            <div>
-              <label>
-                <input
-                  className="input"
-                  type="text"
-                  value={charName}
-                  onChange={handleNameChange}
-                ></input>
-                <button className="button" onClick={getMoreInfo}>
-                  More info
-                </button>
-              </label>
-            </div>
           </div>
+        </div>
+        <div>
+          <label>
+            <input
+              className="input"
+              type="text"
+              value={charName}
+              onChange={handleNameChange}
+            ></input>
+            <button className="button" onClick={getMoreInfo}>
+              More info
+            </button>
+          </label>
         </div>
       </div>
       <div
@@ -297,7 +297,7 @@ function Info() {
         </div>
 
         <div
-          className="infoview"
+          className="infoview2"
           style={{ padding: "1%", display: charDataVisible ? "block" : "none" }}
         >
           {chardata.map((chardata) => (
