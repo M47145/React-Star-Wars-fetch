@@ -8,7 +8,7 @@ import "./App.css";
 import React from "react";
 const App = () => {
   return (
-    <main>
+    <main className="App">
       <h1 style={{ textAlign: "center" }}>
         Star Wars API reader
         <Navbar />

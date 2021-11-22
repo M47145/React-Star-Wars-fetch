@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import "./Info.css";
 
 //Declaring and initializing first page needed for fetch and declaring maxPages needed to sort through data
@@ -208,110 +207,104 @@ function Info() {
 
   return (
     <div className="Info">
-      <div className="buttons">
-        <select
-          style={{
-            backgroundColor: "black",
-            color: "white",
-            margin: "6px",
-            padding: "5px 20px",
-            fontSize: "20px",
-          }}
-          name="selectList"
-          id="selectList"
-          onChange={handleSelect}
-        >
-          <option value="0">People</option>
-          <option value="1">Planets</option>
-          <option value="2">Starships</option>
-          <option value="3">Films</option>
-          <option value="4">Species</option>
-          <option value="5">Vehicles</option>
-        </select>
-        <button
-          style={{
-            backgroundColor: "black",
-            color: "white",
-            margin: "6px",
-            padding: "5px 40px",
-            fontSize: "20px",
-          }}
-          onClick={fetchData}
-        >
-          Search
-        </button>
-        <button
-          style={{
-            backgroundColor: "black",
-            color: "white",
-            margin: "6px",
-            padding: "5px 40px",
-            fontSize: "20px",
-          }}
-          onClick={clear}
-        >
-          Clear
-        </button>
-      </div>
-      <div className="center">
-        <div
-          className="pageButtons"
-          style={{
-            margin: "10px",
-            display: dataIsVisible ? "block" : "none",
-          }}
-        >
-          <button className="button" onClick={nextPage}>
-            Next
+      <div className="topPart">
+        <div className="buttons">
+          <select
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              margin: "6px",
+              padding: "5px 20px",
+              fontSize: "20px",
+            }}
+            name="selectList"
+            id="selectList"
+            onChange={handleSelect}
+          >
+            <option value="0">People</option>
+            <option value="1">Planets</option>
+            <option value="2">Starships</option>
+            <option value="3">Films</option>
+            <option value="4">Species</option>
+            <option value="5">Vehicles</option>
+          </select>
+          <button
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              margin: "6px",
+              padding: "5px 40px",
+              fontSize: "20px",
+            }}
+            onClick={fetchData}
+          >
+            Search
           </button>
-
-          <p1 className="pageText">
-            {pagenumber}/{maxPages}
-          </p1>
-
-          <button className="button" onClick={previousPage}>
-            Previous
+          <button
+            style={{
+              backgroundColor: "black",
+              color: "white",
+              margin: "6px",
+              padding: "5px 40px",
+              fontSize: "20px",
+            }}
+            onClick={clear}
+          >
+            Clear
           </button>
-          <div>
-            <label>
-              <input
-                className="input"
-                type="text"
-                value={charName}
-                onChange={handleNameChange}
-              ></input>
-              <button className="button" onClick={getMoreInfo}>
-                More info
-              </button>
-            </label>
+        </div>
+        <div className="center">
+          <div
+            className="pageButtons"
+            style={{
+              margin: "10px",
+              display: dataIsVisible ? "block" : "none",
+            }}
+          >
+            <button className="button" onClick={nextPage}>
+              Next
+            </button>
+
+            <p1 className="pageText">
+              {pagenumber}/{maxPages}
+            </p1>
+
+            <button className="button" onClick={previousPage}>
+              Previous
+            </button>
+            <div>
+              <label>
+                <input
+                  className="input"
+                  type="text"
+                  value={charName}
+                  onChange={handleNameChange}
+                ></input>
+                <button className="button" onClick={getMoreInfo}>
+                  More info
+                </button>
+              </label>
+            </div>
           </div>
         </div>
       </div>
-
       <div
         className="infoscreen"
         style={{ display: dataIsVisible ? "block" : "none" }}
       >
-        <div style={{ float: "left" }}>
-          <View className="infoview">
-            <div style={{ display: "inline-block" }}>
-              <ul className="dataList" style={{ listStyle: "none" }}>
-                {listItems}
-              </ul>
-            </div>
-          </View>
-          <View>
-            <div
-              className="infoview"
-              style={{ display: charDataVisible ? "block" : "none" }}
-            >
-              {chardata.map((chardata) => (
-                <li style={{ listStyle: "none" }} key={chardata}>
-                  {chardata}
-                </li>
-              ))}
-            </div>
-          </View>
+        <div className="infoview" style={{ display: "inline-block" }}>
+          <ul style={{ listStyle: "none" }}>{listItems}</ul>
+        </div>
+
+        <div
+          className="infoview"
+          style={{ padding: "1%", display: charDataVisible ? "block" : "none" }}
+        >
+          {chardata.map((chardata) => (
+            <li style={{ listStyle: "none" }} key={chardata}>
+              {chardata}
+            </li>
+          ))}
         </div>
       </div>
     </div>
