@@ -193,6 +193,7 @@ function Info() {
       let newPage = pagenumber + 1;
       pagenumber = newPage;
       fetchData();
+      setCharDataVisible(false);
     }
   };
   //Same as above except pagenumber down
@@ -201,6 +202,7 @@ function Info() {
       let oldPage = pagenumber - 1;
       pagenumber = oldPage;
       fetchData();
+      setCharDataVisible(false);
     }
   };
 
@@ -251,30 +253,7 @@ function Info() {
           Clear
         </button>
       </div>
-      <div
-        className="infoscreen"
-        style={{ display: dataIsVisible ? "block" : "none" }}
-      >
-        <View className="infoview">
-          <ul className="dataList" style={{ listStyle: "none" }}>
-            {listItems}
-          </ul>
-        </View>
-        <View>
-          <div
-            className="moreInfo"
-            style={{ display: charDataVisible ? "block" : "none" }}
-          >
-            {chardata.map((chardata) => (
-              <li style={{ listStyle: "none" }} key={chardata}>
-                {chardata}
-              </li>
-            ))}
-          </div>
-        </View>
-      </div>
-
-      <div>
+      <div className="center">
         <div
           className="pageButtons"
           style={{
@@ -306,6 +285,33 @@ function Info() {
               </button>
             </label>
           </div>
+        </div>
+      </div>
+
+      <div
+        className="infoscreen"
+        style={{ display: dataIsVisible ? "block" : "none" }}
+      >
+        <div style={{ float: "left" }}>
+          <View className="infoview">
+            <div style={{ display: "inline-block" }}>
+              <ul className="dataList" style={{ listStyle: "none" }}>
+                {listItems}
+              </ul>
+            </div>
+          </View>
+          <View>
+            <div
+              className="infoview"
+              style={{ display: charDataVisible ? "block" : "none" }}
+            >
+              {chardata.map((chardata) => (
+                <li style={{ listStyle: "none" }} key={chardata}>
+                  {chardata}
+                </li>
+              ))}
+            </div>
+          </View>
         </div>
       </div>
     </div>
