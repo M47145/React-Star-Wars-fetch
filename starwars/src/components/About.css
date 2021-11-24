@@ -2,10 +2,11 @@
   background-image: url("https://wallpaperaccess.com/full/322944.jpg");
   position: fixed;
   width: 100%;
-  height: 90%;
+  height: 88%;
   background-size: cover;
   background-position: bottom;
   text-align: left;
+  overflow-y: scroll;
 }
 .left {
   text-align: left;
@@ -14,6 +15,7 @@
   font-size: 75%;
   margin-top: 20%;
   color: aliceblue;
+  margin-bottom: 15%;
 }
 
 .link {
