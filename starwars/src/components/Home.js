@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.css";
 
 function Home() {
+  //Could have done propably after h1 like this: <div className="middle"><p></p><p></p><p></p></div>
   return (
     <div className="Home">
       <div className="scroll">

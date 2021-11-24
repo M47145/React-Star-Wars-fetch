@@ -1,7 +1,7 @@
 import React from "react";
 import "./Info.css";
 
-//Declaring and initializing first page needed for fetch and declaring maxPages needed to sort through data
+//Declaring and initializing first page needed for fetch and declaring maxPages needed to sort through data.
 let pagenumber = 1;
 let maxPages;
 
@@ -32,7 +32,8 @@ function Info() {
   //Api url
   const basicURL = "https://swapi.dev/api/";
 
-  //Function to fetch data
+  //Function to fetch data. The original response I got had only the first 10 values so I had to change the fetch url
+  //to get all the rest values.
   const fetchData = async () => {
     const fetchURL = `${basicURL}${filterValues[selectedFilter].value}/?page=${pagenumber}`;
     let fetcheddata = await fetch(fetchURL);
@@ -52,6 +53,8 @@ function Info() {
 
     console.log(jsnArr);
   };
+
+  //Fetch additional info about wanted thing by typing name in the input field
   const getMoreInfo = async () => {
     if (selectedFilter === 3) {
       for (let i = 0; i < data.length; i++) {
@@ -68,7 +71,7 @@ function Info() {
           const newfetchURL = `${basicURL}${filterValues[selectedFilter].value}/${id}/`;
           let fetcheddata = await fetch(newfetchURL);
           let jsn = await fetcheddata.json();
-          pushInfo(jsn.opening_crawl);
+          pushInfo(jsn.opening_crawl); //Movies had different response and I only wanted the opening text
         }
       }
     } else {
@@ -81,7 +84,8 @@ function Info() {
           } else {
             id = i + 1 + 10 * (pagenumber - 1);
             if (id >= 17 && selectedFilter === 0) {
-              //Id number 17 was missing from people database so had skip it
+              //Id number 17 was missing from people database so had skip it. Other filters had missing id's as well
+              //and manually fixing everything would have been hard.
               id++;
             }
             console.log(id);
@@ -96,6 +100,8 @@ function Info() {
     setCharName("");
   };
 
+  //Get the wanted info and set it chardata. I would have wanted to get more info about the subjects but the page
+  //layout didn't work the way I wanted and scrolling was buggy. So I settled for less.
   const pushInfo = async (e) => {
     let ar = [];
     if (selectedFilter === 3) {
