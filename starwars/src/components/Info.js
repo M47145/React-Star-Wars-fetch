@@ -184,6 +184,7 @@ function Info() {
     setData([]);
     setchardata([]);
     setDataIsVisible(false);
+    setCharDataVisible(false);
   };
 
   //Adds 1 to pagenumber and fetches again
@@ -274,7 +275,10 @@ function Info() {
             </button>
           </div>
         </div>
-        <div>
+        <div
+          className="moreInfo"
+          style={{ display: dataIsVisible ? "block" : "none" }}
+        >
           <label>
             <input
               className="input"
@@ -306,6 +310,7 @@ function Info() {
             </li>
           ))}
         </div>
+        <div className="extraspace"></div>
       </div>
     </div>
   );

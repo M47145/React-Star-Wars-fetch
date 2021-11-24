@@ -1,15 +1,21 @@
 .About {
   background-image: url("https://wallpaperaccess.com/full/322944.jpg");
   position: fixed;
-  min-width: 100%;
-  min-height: 92%;
+  width: 100%;
+  height: 90%;
   background-size: cover;
   background-position: bottom;
   text-align: left;
 }
 .left {
   text-align: left;
-  margin-left: 40px;
-  width: 500px;
-  font-size: 26px;
+  margin-left: 5%;
+  width: 35%;
+  font-size: 75%;
+  margin-top: 20%;
+  color: aliceblue;
+}
+
+.link {
+  color: purple;
 }

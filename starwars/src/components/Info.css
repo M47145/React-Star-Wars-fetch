@@ -52,7 +52,9 @@
   opacity: 0.8;
   max-width: 20%;
   height: auto;
+  margin-top: 10px;
   min-width: 220px;
+  margin-bottom: 50px;
 }
 .pageButtons {
   text-align: center;
@@ -75,6 +77,11 @@
 
 .input {
   font-size: 20px;
-  padding: 5px 40px;
+  padding: 5px 5px;
   width: 10%;
+}
+
+.extraspace {
+  height: 10%;
+  width: auto;
 }

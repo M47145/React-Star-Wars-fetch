@@ -7,7 +7,7 @@ function About() {
         <p>This API reader is my advanced web development course project. </p>
         <p>
           It uses open api{" "}
-          <a
+          <a className="link"
             href="https://swapi.dev/"
             target="_blank"
             rel="noopener noreferrer"
