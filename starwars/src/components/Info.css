@@ -5,7 +5,7 @@
   height: 90%;
   background-size: cover;
   background-position: bottom;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .dataList {
@@ -47,7 +47,7 @@
   text-align: left;
   color: white;
   border-color: black;
-  margin-left: 30%;
+  margin-left: 10%;
   background-color: black;
   opacity: 0.8;
   max-width: 20%;
@@ -78,7 +78,7 @@
 .input {
   font-size: 20px;
   padding: 5px 5px;
-  width: 10%;
+  min-width: 15%;
 }
 
 .extraspace {

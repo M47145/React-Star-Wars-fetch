@@ -50,8 +50,6 @@ function Info() {
     let jsnArr = jsn.results;
     setData(jsnArr);
     setDataIsVisible(true);
-
-    console.log(jsnArr);
   };
 
   //Fetch additional info about wanted thing by typing name in the input field
@@ -300,22 +298,25 @@ function Info() {
       </div>
       <div
         className="infoscreen"
-        style={{ display: dataIsVisible ? "block" : "none" }}
+        style={{ display: dataIsVisible ? "inline-block" : "none" }}
       >
-        <div className="infoview" style={{ display: "inline-block" }}>
+        <span className="infoview" style={{ display: "inline-block" }}>
           <ul style={{ listStyle: "none" }}>{listItems}</ul>
-        </div>
+        </span>
 
-        <div
+        <span
           className="infoview2"
-          style={{ padding: "1%", display: charDataVisible ? "block" : "none" }}
+          style={{
+            padding: "1%",
+            display: charDataVisible ? "inline-block" : "none",
+          }}
         >
           {chardata.map((chardata) => (
             <li style={{ listStyle: "none" }} key={chardata}>
               {chardata}
             </li>
           ))}
-        </div>
+        </span>
         <div className="extraspace"></div>
       </div>
     </div>
