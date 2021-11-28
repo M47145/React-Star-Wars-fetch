@@ -20,7 +20,11 @@ the categories right.
 
 -You can't get additional info about anything besides things/characters shown on screen. Also can't have typos.
 
+-Landscapemode on phone doesn't scroll down enough
+
 API link: https://swapi.dev/api/
 
 Own thoughts:
 I made this application more as a demonstration than actual webpage. I'm somewhat happy about how the functions work but the pages are a bit empty I feel. With more time, I would propably make the application more interactive and feel like you are on an actual webpage.
+
+LINK TO DEMO https://youtu.be/nc8dMWHL_4A
