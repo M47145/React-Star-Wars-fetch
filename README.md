@@ -1,7 +1,7 @@
 Star Wars API reader
 
 This is a React web application that displays data fetched from Star Wars API.
-Used this project build and copied it to node express which was pushed to another git repo.
+Used this project build and copied it to node express project which was pushed to another git repo.
 That repo was connected to Heroku where the application can be viewed https://starwarsfetchapidisplay.herokuapp.com/.
 
 Functionality:
